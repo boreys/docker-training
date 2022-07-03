@@ -1,0 +1,15 @@
+version: '3.1'
+services:
+  mymongodb:
+    image: mongo:5.0.6
+    restart: always
+    deploy:
+      resources:
+        limits:
+          memory: 256M
+        reservations:
+          memory: 64M
+    ports:
+      - "27017:27017"
+    volumes:
+      - ./db:/data/db

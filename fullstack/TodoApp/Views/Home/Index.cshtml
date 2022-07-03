@@ -1,0 +1,30 @@
+﻿@model List<TodoModel>
+@{
+    ViewData["Title"] = "Home Page";
+}
+
+<div class="text-center">
+    <h1 class="display-4">My TODO List</h1>
+    <div class="container px-5 my-5">
+        
+        <form id="contactForm" action="/Home/Index" method="post">
+            <div class="mb-3">
+                <label class="form-label" for="newTodo">New TODO</label>
+                <input class="form-control" id="newTodo" name="newTodo" type="text" placeholder="New TODO" data-sb-validations="required" />
+                <div class="invalid-feedback" data-sb-feedback="newTodo:required">New TODO is required.</div>
+            </div>
+            <div class="d-grid">
+                <button class="btn btn-primary btn-lg" id="submitButton" type="submit">Submit</button>
+            </div>
+        </form>
+        @if(Model != null && Model.Count > 0)
+        {
+            <ul>
+                @foreach(var todo in Model)
+                {
+                    <li>@todo.Text</li>
+                }
+            </ul>
+        }
+    </div>
+</div>
